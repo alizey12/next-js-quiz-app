@@ -3,6 +3,7 @@ import Image from "next/image";
 import Logo from "../../public/assets/image/logo.png";
 import { useRouter } from 'next/navigation'
 
+import card from "../pages/card";
 export default function Splash() {
   const router = useRouter()
     return(
@@ -20,7 +21,7 @@ export default function Splash() {
         </div>
         
         <div>
-          <button onClick={() => router.push('/components/card')} className="bg-black text-white font-mono text-lg font-bold w-40 m-10 rounded-full h-10">Lets Start</button>
+          <button onClick={() => router.push('/card')} className="bg-black text-white font-mono text-lg font-bold w-40 m-10 rounded-full h-10">Lets Start</button>
         </div>
       </div>
     </div>
