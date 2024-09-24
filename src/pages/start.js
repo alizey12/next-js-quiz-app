@@ -1,8 +1,10 @@
 "use client"
 import Image from "next/image";
 import Logo from "../../public/assets/image/logo.png";
+import { useRouter } from 'next/navigation'
 
 export default function Splash() {
+  const router = useRouter()
     return(
         
              <div className="bg-gradient-to-r from-gray-400 to-pink-800">
@@ -18,7 +20,7 @@ export default function Splash() {
         </div>
         
         <div>
-          <button className="bg-black text-white font-mono text-lg font-bold w-40 m-10 rounded-full h-10">Lets Start</button>
+          <button onClick={() => router.push('/components/card')} className="bg-black text-white font-mono text-lg font-bold w-40 m-10 rounded-full h-10">Lets Start</button>
         </div>
       </div>
     </div>
