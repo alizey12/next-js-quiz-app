@@ -12,6 +12,7 @@ export default function Card() {
       optionD: "150 degrees Celcius",
       answer: "100 degrees Celcius",
     },
+
     {
       question: "Who wrote Julius Caesar, Macbeth and Hamlet?",
       optionA: "Wole Soyinka",
@@ -20,6 +21,7 @@ export default function Card() {
       optionD: "Dan Brown",
       answer: "William Shakespeare",
     },
+
     {
       question: "What did the crocodile swallow in Peter Pan?",
       optionA: "A Book",
@@ -28,6 +30,7 @@ export default function Card() {
       optionD: "Alarm Clock",
       answer: "Alarm Clock",
     },
+
     {
       question: "Which is the only mammal that can’t jump?",
       optionA: "Dog",
@@ -36,6 +39,7 @@ export default function Card() {
       optionD: "Lion",
       answer: "Elephant",
     },
+
     {
       question: "Who lived at 221B, Baker Street, London?",
       optionA: "Tony Stark",
@@ -44,6 +48,7 @@ export default function Card() {
       optionD: "Samuel L. Jackson",
       answer: "Sherlock Holmes",
     },
+
     {
       question: "What colour is a panda?",
       optionA: "Green and Yellow",
@@ -52,6 +57,7 @@ export default function Card() {
       optionD: "Black and White",
       answer: "Black and White",
     },
+
     {
       question: "Where is the smallest bone in the human body?",
       optionA: "The Chest",
@@ -60,6 +66,7 @@ export default function Card() {
       optionD: "The Hands",
       answer: "The Ear",
     },
+
     {
       question: "What does the roman numeral C represent?",
       optionA: "100",
@@ -68,6 +75,7 @@ export default function Card() {
       optionD: "1,000,000",
       answer: "100",
     },
+
     {
       question: "What takes place in Hong Kong's Happy Valley?",
       optionA: "Chicken Wrestling",
@@ -76,6 +84,7 @@ export default function Card() {
       optionD: "Arm Wrestling",
       answer: "Horse racing",
     },
+
     {
       question: "Who painted the Mona Lisa?",
       optionA: "Alexander Graham Bell",
@@ -84,6 +93,7 @@ export default function Card() {
       optionD: "Albert Einstein",
       answer: "Leonardo Da Vinci",
     },
+
     {
       question: "What’s the most important book in the Moslem religion?",
       optionA: "The Koran",
@@ -92,6 +102,7 @@ export default function Card() {
       optionD: "The Chemistry text Book",
       answer: "The Koran",
     },
+
     {
       question: "What’s the capital of Ethiopia?",
       optionA: "Cape Town",
@@ -100,6 +111,7 @@ export default function Card() {
       optionD: "Syndey",
       answer: "Addis Ababa",
     },
+
     {
       question: "How many squares are there on a chess board?",
       optionA: "128",
@@ -108,6 +120,7 @@ export default function Card() {
       optionD: "256",
       answer: "64",
     },
+
     {
       question: "Who invented the electric light bulb?",
       optionA: "Tom Cruise",
@@ -116,6 +129,7 @@ export default function Card() {
       optionD: "Thomas Edison",
       answer: "Thomas Edison",
     },
+
     {
       question: "What are the first three words of the bible?",
       optionA: "be with everyone",
@@ -126,37 +140,43 @@ export default function Card() {
     },
   ];
 
+ 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
-  const [answered, setAnswered] = useState(false); // track if the question is answered
-
+  const [answered, setAnswered] = useState(false);
   const onCheckAnswer = (option) => {
+  
     setSelectedOption(option);
     setIsCorrect(option === questions[questionIndex].answer);
-    setAnswered(true); // Mark that the user has answered
+    setAnswered(true);
+   
+    //    if (questions[questionIndex].answer === selectedOption) {
+    // document.getElementById("option").style.backgroundColor="#4ade80";
+    //   }else {
+    //     document.getElementById("option").style.backgroundColor="#f87171";
+    //    }
   };
 
   const onSubmit = () => {
     if (questionIndex < questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
-      setSelectedOption(null); // reset the selected option for the next question
-      setIsCorrect(null); // reset the correctness
-      setAnswered(false); // reset the answered state
+setSelectedOption(null)
+      setIsCorrect(null)
+      setAnswered(false)// reset the selected answer for the next question
     } else {
       console.log("Quiz completed!");
       // Optionally reset the quiz
       // setQuestionIndex(0);
     }
   };
-
   return (
-    <div className="bg-gradient-to-r from-sky-400 to-emerald-800">
+    <div className="bg-gradient-to-r from-sky-400 to-emerld-800">
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-center h-screen">
-          <div className="rounded-lg shadow-lg hover:shadow-gray-300 bg-sky-900 shadow-lg shadow-white text-white p-6 rounded-lg">
+          <div className="  rounded-lg shadow-lg hover:shadow-gray-300 bg-sky-900 shadow-lg shadow-white text-white p-6 rounded-lg ">
             <div>
-              <h1 className="text-4xl font-bold text-rose-500 mb-4">
+              <h1 className="text-4xl  font-bold text-rose-500 mb-4">
                 Question : {questionIndex + 1}{" "}
               </h1>
 
@@ -165,7 +185,7 @@ export default function Card() {
                   {questions[questionIndex].question}
                 </p>
 
-                <div className="grid grid-cols-2 gap-10">
+                <div className="grid grid-cols-2  gap-10">
                   {[
                     questions[questionIndex].optionA,
                     questions[questionIndex].optionB,
@@ -173,18 +193,16 @@ export default function Card() {
                     questions[questionIndex].optionD,
                   ].map((option, idx) => (
                     <ul key={idx}>
-                      <li
+                    <li
                         onClick={() => onCheckAnswer(option)}
-                        className={`border bg-white text-black rounded-full h-[50px] text-center font-bold hover:shadow-md hover:shadow-white place-content-center ${
-                          answered && option === questions[questionIndex].answer
-                            ? "bg-green-400"
-                            : selectedOption === option
-                            ? isCorrect
-                              ? "bg-green-400"
-                              : "bg-red-400"
-                            : ""
-                        }`}
+                        className={`border bg-white text-black rounded-full h-[50px] text-center font-bold hover:shadow-md hover:shadow-white place-content-center 
+                          ${answered && option === questions[questionIndex].answer ? "bg-green-400" : ""}
+                          ${selectedOption === option && !isCorrect ? "bg-red-400" : ""}
+                          ${answered && selectedOption !== option ? "cursor-not-allowed" : ""}
+                          ${answered && selectedOption !== option ? "opacity-50" : ""}
+                        `}
                         value={option}
+                        style={{ pointerEvents: answered ? "none" : "auto" }} // Disable clicks once answered
                       >
                         {option}
                       </li>
