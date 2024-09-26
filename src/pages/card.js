@@ -1,6 +1,8 @@
 "use client";
 import "../app/globals.css";
 import { useState } from "react";
+import Result from "../../src/pages/Result";
+import { useRouter } from "next/router";
 
 export default function Card() {
   const questions = [
@@ -20,60 +22,6 @@ export default function Card() {
       optionC: "Ngozi Chimamanda Adichie",
       optionD: "Dan Brown",
       answer: "William Shakespeare",
-    },
-
-    {
-      question: "What did the crocodile swallow in Peter Pan?",
-      optionA: "A Book",
-      optionB: "A Computer",
-      optionC: "A pair of shoes",
-      optionD: "Alarm Clock",
-      answer: "Alarm Clock",
-    },
-
-    {
-      question: "Which is the only mammal that can’t jump?",
-      optionA: "Dog",
-      optionB: "Elephant",
-      optionC: "Goat",
-      optionD: "Lion",
-      answer: "Elephant",
-    },
-
-    {
-      question: "Who lived at 221B, Baker Street, London?",
-      optionA: "Tony Stark",
-      optionB: "Morgan Freeman",
-      optionC: "Sherlock Holmes",
-      optionD: "Samuel L. Jackson",
-      answer: "Sherlock Holmes",
-    },
-
-    {
-      question: "What colour is a panda?",
-      optionA: "Green and Yellow",
-      optionB: "Blue and Red",
-      optionC: "Green and White",
-      optionD: "Black and White",
-      answer: "Black and White",
-    },
-
-    {
-      question: "Where is the smallest bone in the human body?",
-      optionA: "The Chest",
-      optionB: "The Ear",
-      optionC: "The Legs",
-      optionD: "The Hands",
-      answer: "The Ear",
-    },
-
-    {
-      question: "What does the roman numeral C represent?",
-      optionA: "100",
-      optionB: "10",
-      optionC: "10,000",
-      optionD: "1,000,000",
-      answer: "100",
     },
 
     {
@@ -140,41 +88,50 @@ export default function Card() {
     },
   ];
 
- 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [answered, setAnswered] = useState(false);
+ // Store detailed results
+  const [score, setScore] = useState(0);
+  const router = useRouter();
+
+
+
+
   const onCheckAnswer = (option) => {
-  
     setSelectedOption(option);
-    setIsCorrect(option === questions[questionIndex].answer);
+    const correct = option === questions[questionIndex].answer;
     setAnswered(true);
+    setIsCorrect(correct);
    
-    //    if (questions[questionIndex].answer === selectedOption) {
-    // document.getElementById("option").style.backgroundColor="#4ade80";
-    //   }else {
-    //     document.getElementById("option").style.backgroundColor="#f87171";
-    //    }
+
+    if (correct) {
+      setScore(score + 1);
+    }
+
   };
+
 
   const onSubmit = () => {
     if (questionIndex < questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
-setSelectedOption(null)
-      setIsCorrect(null)
-      setAnswered(false)// reset the selected answer for the next question
+      setSelectedOption(null);
+      setIsCorrect(null);
+      setAnswered(false); // reset the selected answer for the next question
     } else {
-      console.log("Quiz completed!");
-      // Optionally reset the quiz
-      // setQuestionIndex(0);
+      // Navigate to the Result page with score as query parameter
+      router.push(`/Result?score=${score}&total=${questions.length}`);
     }
   };
+
+
   return (
-    <div className="bg-gradient-to-r from-sky-400 to-emerld-800">
+    <div className="bg-gradient-to-r from-gray-400 to-pink-800">
+      {/* // <div className="bg-gradient-to-r from-sky-400 to-emerld-800"> */}
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-center h-screen">
-          <div className="  rounded-lg shadow-lg hover:shadow-gray-300 bg-sky-900 shadow-lg shadow-white text-white p-6 rounded-lg ">
+          <div className="  rounded-lg shadow-lg hover:shadow-gray-300 bg-black shadow-lg shadow-white text-white p-6 rounded-lg ">
             <div>
               <h1 className="text-4xl  font-bold text-rose-500 mb-4">
                 Question : {questionIndex + 1}{" "}
@@ -193,13 +150,30 @@ setSelectedOption(null)
                     questions[questionIndex].optionD,
                   ].map((option, idx) => (
                     <ul key={idx}>
-                    <li
+                      <li
                         onClick={() => onCheckAnswer(option)}
-                        className={`border bg-white text-black rounded-full h-[50px] text-center font-bold hover:shadow-md hover:shadow-white place-content-center 
-                          ${answered && option === questions[questionIndex].answer ? "bg-green-400" : ""}
-                          ${selectedOption === option && !isCorrect ? "bg-red-400" : ""}
-                          ${answered && selectedOption !== option ? "cursor-not-allowed" : ""}
-                          ${answered && selectedOption !== option ? "opacity-50" : ""}
+                        className={`border  text-white rounded-full h-[45px] text-center font-bold hover:shadow-md hover:shadow-white place-content-center 
+                          ${
+                            answered &&
+                            option === questions[questionIndex].answer
+                              ? "bg-green-400"
+                              : ""
+                          }
+                          ${
+                            selectedOption === option && !isCorrect
+                              ? "bg-red-400"
+                              : ""
+                          }
+                          ${
+                            answered && selectedOption !== option
+                              ? "cursor-not-allowed"
+                              : ""
+                          }
+                          ${
+                            answered && selectedOption !== option
+                              ? "opacity-50"
+                              : ""
+                          }
                         `}
                         value={option}
                         style={{ pointerEvents: answered ? "none" : "auto" }} // Disable clicks once answered
@@ -214,13 +188,14 @@ setSelectedOption(null)
             </div>
           </div>
           <button
-            className="hover:bg-white hover:text-black w-[10rem] h-[3rem] m-5 rounded-md bg-sky-900 text-white"
+            className="hover:bg-white hover:text-black w-[10rem] h-[3rem] m-5 rounded-md bg-black text-white"
             onClick={() => onSubmit()}
           >
-            Submit
+            {questionIndex < questions.length - 1 ? "Next" : "Finish"}
           </button>
         </div>
       </div>
     </div>
+    // </div>
   );
 }
