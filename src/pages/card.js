@@ -7,85 +7,97 @@ import { useRouter } from "next/router";
 export default function Card() {
   const questions = [
     {
-      question: "What temperature does water boil at?",
-      optionA: "50 degrees Celcius",
-      optionB: "25 degrees Celcius",
-      optionC: "100 degrees Celcius",
-      optionD: "150 degrees Celcius",
-      answer: "100 degrees Celcius",
+      question: "Who was the first person to step on the moon?",
+      optionA: "Neil Armstrong",
+      optionB: "John Glenn",
+      optionC: "Buzz Aldrin",
+      optionD: "Yuri Gagarin",
+      answer: "Neil Armstrong",
     },
 
     {
-      question: "Who wrote Julius Caesar, Macbeth and Hamlet?",
-      optionA: "Wole Soyinka",
+      question: "Which planet is known as the Red Planet?",
+      optionA: "Jupiter",
+      optionB: "Mars",
+      optionC: "Venus",
+      optionD: "Earth",
+      answer: "Mars",
+    },
+
+    {
+      question: "What is the largest oceann in the world",
+      optionA: "Atlantic Oceann",
+      optionB: "Indian Ocean",
+      optionC: "Pacific Ocean",
+      optionD: "Arctic Ocean",
+      answer: "Pacific Ocean",
+    },
+
+    {
+      question: "What is the longest river in the world?",
+      optionA: "Amazon River",
+      optionB:"Mississippi River",
+      optionC:"Yangtze River",
+      optionD: "Nile River",
+      answer: "Nile River",
+    },
+
+
+    {
+      question: "In which year did World War I begin?",
+      optionA: "1912",
+      optionB: "1914",
+      optionC: "1916",
+      optionD: "1918",
+      answer: "1914",
+    },
+
+    {
+      question: "Which element has the chemical symbol 'O'?",
+      optionA: "Oxygen",
+      optionB: "Osmium",
+      optionC: "Orthonium",
+      optionD: "Ozone",
+      answer: "Oxygen",
+    },
+
+
+    {
+      question: "What is the hardest natural substance on Earth?",
+      optionA: "Gold",
+      optionB: "Iron",
+      optionC: "Diamond",
+      optionD: "Platinum",
+      answer: "Diamond",
+    },
+
+
+    {
+      question: "Who wrote the play Romeo and Juliet",
+      optionA: "Charles Dickens",
       optionB: "William Shakespeare",
-      optionC: "Ngozi Chimamanda Adichie",
-      optionD: "Dan Brown",
+      optionC: " George Orwell",
+      optionD: "Leo Tolstoy",
       answer: "William Shakespeare",
     },
 
     {
-      question: "What takes place in Hong Kong's Happy Valley?",
-      optionA: "Chicken Wrestling",
-      optionB: "Horse racing",
-      optionC: "Street Racing",
-      optionD: "Arm Wrestling",
-      answer: "Horse racing",
+      question: "What is the capital of Australia?",
+      optionA: "Sydney",
+      optionB: "Melbourne",
+      optionC: "Canberra",
+      optionD: "Brisbane",
+      answer: "Canberra",
+    },
+    {
+      question: "Which country has the largest population in the world?",
+      optionA: "United States",
+      optionB: "China",
+      optionC: "India",
+      optionD: "Russia",
+      answer: "China",
     },
 
-    {
-      question: "Who painted the Mona Lisa?",
-      optionA: "Alexander Graham Bell",
-      optionB: "Sir Isaac Newton",
-      optionC: "Leonardo Da Vinci",
-      optionD: "Albert Einstein",
-      answer: "Leonardo Da Vinci",
-    },
-
-    {
-      question: "What’s the most important book in the Moslem religion?",
-      optionA: "The Koran",
-      optionB: "The Dictionary",
-      optionC: "The Bible",
-      optionD: "The Chemistry text Book",
-      answer: "The Koran",
-    },
-
-    {
-      question: "What’s the capital of Ethiopia?",
-      optionA: "Cape Town",
-      optionB: "San Francisco",
-      optionC: "Abuja",
-      optionD: "Syndey",
-      answer: "Addis Ababa",
-    },
-
-    {
-      question: "How many squares are there on a chess board?",
-      optionA: "128",
-      optionB: "64",
-      optionC: "32",
-      optionD: "256",
-      answer: "64",
-    },
-
-    {
-      question: "Who invented the electric light bulb?",
-      optionA: "Tom Cruise",
-      optionB: "Barack Obama",
-      optionC: "Wole Soyinka",
-      optionD: "Thomas Edison",
-      answer: "Thomas Edison",
-    },
-
-    {
-      question: "What are the first three words of the bible?",
-      optionA: "be with everyone",
-      optionB: "Again Jesus asked",
-      optionC: "In the beginning",
-      optionD: "At that time",
-      answer: "In the beginning",
-    },
   ];
 
   const [questionIndex, setQuestionIndex] = useState(0);

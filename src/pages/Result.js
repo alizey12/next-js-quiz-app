@@ -254,7 +254,7 @@ router.push('/card')
   const circumference = normalizedRadius * 2 * Math.PI;
   const strokeDashoffset = circumference - (score / total) * circumference;
      
-      
+  
   
   return (
     <>
@@ -269,11 +269,15 @@ router.push('/card')
               >
                 Reset
               </button>
+              <h2>Go Back and Try Again</h2>
+            </div>
+            <div className=" text-bolder">
+              <h5 className="text-bold text-xl content-center align-center justify-ceter mx-10">Quiz Completed !</h5>
             </div>
             <div className="grid grid-cols-2">
               <div className="text-white">
                 <div className="flex flex-col items-center justify-center h-64 space-y-4">
-                  <h6 className="text-lg font-bold">Score</h6> {/* Added space-y-4 for vertical gap */}
+                  {/* Added space-y-4 for vertical gap */}
                   <svg height="120" width="120">
                     <circle
                       stroke="#e5e7eb" // Light gray for background
@@ -299,6 +303,12 @@ router.push('/card')
                     {score}/{total}
                   </div>
                 </div>
+                <div className="border border-white p-5 m-5">
+              <h6 className="text-lg font-bold">Score</h6> 
+            <h2>Total Question:{total}</h2>
+            <h2>Correct Answer: {score}</h2>
+            
+          </div>
               </div>
               <div>
                 <canvas
@@ -306,8 +316,10 @@ router.push('/card')
                   className="w-[250px] h-[400px] m-auto pb-20 inset-0"
                 ></canvas>
               </div>
+             
             </div>
-          </div>
+
+            </div>
         </div>
       </div>
     </div>
