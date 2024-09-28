@@ -142,8 +142,8 @@ export default function Card() {
     <div className="bg-gradient-to-r from-gray-400 to-pink-800">
       {/* // <div className="bg-gradient-to-r from-sky-400 to-emerld-800"> */}
       <div className="container mx-auto">
-        <div className="flex flex-col items-center justify-center h-screen">
-          <div className="  rounded-lg shadow-lg hover:shadow-gray-300 bg-black shadow-lg shadow-white text-white p-6 rounded-lg ">
+        <div className="flex flex-col items-center justify-center min-h-screen">
+          <div className=" w-[400px] h-[400px] max-w-full rounded-lg shadow-lg hover:shadow-gray-300 bg-black shadow-lg shadow-white text-white p-6 rounded-lg ">
             <div>
               <h1 className="text-4xl  font-bold text-rose-500 mb-4">
                 Question : {questionIndex + 1}{" "}
